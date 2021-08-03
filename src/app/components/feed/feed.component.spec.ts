@@ -1,25 +1,55 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { RouterTestingModule } from '@angular/router/testing'
+import { of } from 'rxjs'
+import { posts } from 'src/app/constants/db-testing.constant'
 
-import { FeedComponent } from './feed.component';
+import { CoreService } from 'src/app/services/core/core.service'
+import { PostComponent } from '../post/post.component'
+
+import { FeedComponent } from './feed.component'
 
 describe('FeedComponent', () => {
-  let component: FeedComponent;
-  let fixture: ComponentFixture<FeedComponent>;
-
+  let component: FeedComponent
+  let fixture: ComponentFixture<FeedComponent>
+  let el: DebugElement
+  let coreService: any
+  
   beforeEach(async () => {
+    const coreServiceSpy = jasmine.createSpyObj('CoreService', ['getPosts'])
     await TestBed.configureTestingModule({
-      declarations: [ FeedComponent ]
+      declarations: [ 
+        FeedComponent,
+        PostComponent
+      ],
+      providers: [
+        {provide: CoreService, useValue: coreServiceSpy}
+      ],
+      imports: [
+        RouterTestingModule
+      ]
     })
-    .compileComponents();
-  });
+    .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FeedComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(FeedComponent)
+    component = fixture.componentInstance
+    el = fixture.debugElement
+    coreService = TestBed.inject(CoreService)
+    coreService.getPosts.and.returnValue(of(posts))
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+
+  it('should display posts', () => {
+    const section = el.query(By.css('section'))
+    const posts = section.children.filter(elem => elem.name === 'app-post-card')
+    expect(posts).toBeTruthy()
+  })
+
+})

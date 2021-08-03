@@ -8,6 +8,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { PostComponent } from './components/post/post.component';
 import { AboutComponent } from './components/about/about.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
+import { CoreService } from './services/core/core.service';
 
 @NgModule({
   declarations: [

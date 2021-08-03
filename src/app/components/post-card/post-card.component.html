@@ -1,1 +1,9 @@
-<p>post-card works!</p>
+<div class="card">
+    <div class="title">
+        {{title |titlecase}}
+    </div>
+    <div class="body">
+        {{body}}
+    </div>
+    <button (click)="goToPost()">Show post</button>
+</div>

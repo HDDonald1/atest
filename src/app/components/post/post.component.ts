@@ -1,15 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostData } from 'src/app/models/share.model';
 
 @Component({
-  selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  
+  get title(): string {
+    return this.postData?.post?.title
   }
 
+  get body(): string {
+    return this.postData?.post?.body
+  }
+
+  get author(): string {
+    return `${this.postData?.user?.username} (${this.postData?.user?.name})`
+  } 
+  
+  postData: PostData = null
+
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
+    this.route.data.subscribe(
+      (data) => {
+        this.postData = data.post
+      }
+    )
+  }
+
+  back(): void {
+    this.router.navigate(['/'])
+  }
 }

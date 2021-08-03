@@ -1,1 +1,8 @@
-<p>feed works!</p>
+<section>
+    <ng-container *ngFor="let post of posts">
+        <app-post-card [post]="post" (showCard)="onShowCard($event)"></app-post-card>
+    </ng-container>
+    <div class="no-posts" *ngIf="!posts?.length">
+        No posts for now
+    </div>
+</section>

@@ -1,14 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { PostResolver } from 'src/app/services/post.resolver'
 
-import { PostComponent } from './post.component';
+import { PostComponent } from './post.component'
 
 describe('PostComponent', () => {
-  let component: PostComponent;
-  let fixture: ComponentFixture<PostComponent>;
+  let component: PostComponent
+  let fixture: ComponentFixture<PostComponent>
+  let el: DebugElement
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostComponent ]
+      declarations: [ PostComponent ],
+      imports: [
+        RouterTestingModule
+      ],
+      providers: [
+        PostResolver
+      ]
     })
     .compileComponents();
   });
@@ -16,10 +26,11 @@ describe('PostComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PostComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    el = fixture.debugElement
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

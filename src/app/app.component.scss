@@ -1,9 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
 .main-container {
     width: 100%;
     max-width: 1440px;
-    height: 95vh;
+    min-height: 94.5vh;
     background: rgb(197, 195, 195);
     margin: 0 auto;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .header {
@@ -11,8 +17,9 @@
     background: rgb(255, 79, 79);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
-    margin-right: -5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 ul {
@@ -20,7 +27,7 @@ ul {
     justify-content: space-between;
 
     li {
-        margin-right: 5rem;
+        margin-right: 3rem;
     }
 }
 
