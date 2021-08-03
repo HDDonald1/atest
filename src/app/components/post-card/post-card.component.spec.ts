@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { posts } from 'src/app/constants/db-testing.constant'
+import { posts } from '../../constants/db-testing.constant'
 import { PostCardComponent } from './post-card.component'
 
 describe('PostCardComponent', () => {

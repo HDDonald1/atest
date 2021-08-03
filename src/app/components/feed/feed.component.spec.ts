@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs'
-import { posts } from 'src/app/constants/db-testing.constant'
+import { posts } from '../../constants/db-testing.constant'
 
-import { CoreService } from 'src/app/services/core/core.service'
+import { CoreService } from '../../services/core/core.service'
 import { PostComponent } from '../post/post.component'
 
 import { FeedComponent } from './feed.component'

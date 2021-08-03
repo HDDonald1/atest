@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostData } from 'src/app/models/share.model';
+import { PostData } from '../../models/share.model';
 
 @Component({
   templateUrl: './post.component.html',

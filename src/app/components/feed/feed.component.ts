@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { trimStart } from 'cypress/types/lodash';
-import { Post } from 'src/app/models/post.model';
-import { CoreService } from 'src/app/services/core/core.service';
+import { Post } from '../../models/post.model';
+import { CoreService } from '../../services/core/core.service';
 
 @Component({
   templateUrl: './feed.component.html',

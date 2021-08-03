@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, zip } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { Post } from 'src/app/models/post.model';
-import { PostData } from 'src/app/models/share.model';
-import { User } from 'src/app/models/user.model';
+import { Post } from '../../models/post.model';
+import { PostData } from '../../models/share.model';
+import { User } from '../../models/user.model';
 
 @Injectable()
 

@@ -3,8 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { CoreService } from './core.service';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { posts } from 'src/app/constants/db-testing.constant';
-import { Post } from 'src/app/models/post.model';
+import { posts } from '../../constants/db-testing.constant';
+import { Post } from '../../models/post.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 describe('CoreService', () => {

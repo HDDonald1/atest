@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
-import { PostResolver } from 'src/app/services/post.resolver'
+import { PostResolver } from '../../services/post.resolver'
 
 import { PostComponent } from './post.component'
 
