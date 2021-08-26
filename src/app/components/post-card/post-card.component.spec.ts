@@ -11,27 +11,25 @@ describe('PostCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostCardComponent ]
-    })
-    .compileComponents()
+      declarations: [PostCardComponent],
+    }).compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostCardComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(PostCardComponent)
+    component = fixture.componentInstance
     el = fixture.debugElement
     fixture.detectChanges()
   })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create the post', () => {
+    const post = fixture.debugElement.componentInstance
+    expect(post).toBeTruthy()
   })
 
   it('should display the post', () => {
     component.post = posts[0]
     const post = el.query(By.css('.card'))
     expect(post).toBeTruthy()
-    const title = post.query(By.css('.title'))
-    expect(title).toBeTruthy()
   })
 })
