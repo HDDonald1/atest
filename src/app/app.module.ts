@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component'
 import { PostCardComponent } from './components/post-card/post-card.component'
 import { CoreService } from './services/core/core.service'
 import { ReversePipe } from './pipes/reverse.pipe'
+import { RootStoreModule } from 'root-store/root-store.module'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ReversePipe } from './pipes/reverse.pipe'
     PostCardComponent,
     ReversePipe,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, RootStoreModule],
   providers: [CoreService],
   bootstrap: [AppComponent],
 })
