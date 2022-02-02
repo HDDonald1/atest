@@ -21,7 +21,10 @@ describe('FeedComponent', () => {
     const coreServiceSpy = jasmine.createSpyObj('CoreService', ['getPosts', 'asyncSubtract'])
     await TestBed.configureTestingModule({
       declarations: [FeedComponent, PostCardComponent],
-      providers: [{ provide: CoreService, useValue: coreServiceSpy }],
+      providers: [
+        { provide: CoreService, useValue: coreServiceSpy },
+        /* provideMockStore({ initialState }) */
+      ],
       imports: [RouterTestingModule],
     }).compileComponents()
   })
@@ -51,18 +54,23 @@ describe('FeedComponent', () => {
     expect(compiled.querySelector('.no-posts').textContent).toContain('No posts for now')
   })
 
-  /* it('should fetch async subtract data', waitForAsync(() => {
+  it('should fetch async subtract data', waitForAsync(() => {
     fixture.detectChanges()
     fixture.whenStable().then(
       () => {
         expect(component.subtractData).toBe(-1)
       }
     )
-  })) */
+  }))
 
   it('should fetch async subtract data', fakeAsync(() => {
     fixture.detectChanges()
     tick()
     expect(component.subtractData).toBe(-1)
   }))
+
+  it('should call getposts', () => {
+    component.ngOnInit();
+    expect(coreService.getPosts).toHaveBeenCalledTimes(1)
+  })
 })
