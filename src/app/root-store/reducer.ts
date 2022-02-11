@@ -10,7 +10,7 @@ const reducer = createReducer(
     ),
     on(
         SetPostAction,
-        (state, { post }) => ({ ...state, posts: { ...state.posts.filter((p) => p.id !== post.id).concat(post) } })
+        (state, { post }) => ({ ...state, posts: [ ...state.posts.filter((p) => p.id !== post.id), post ] })
     ),
     on(
         SetUserAction,
