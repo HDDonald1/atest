@@ -78,20 +78,6 @@ describe('FeedComponent', () => {
     )
   })
 
-  /* it('should display posts', () => {
-    component.ngOnInit()
-    const compiled = el.nativeElement
-    expect(compiled.querySelectorAll('app-post-card').length).toBeTruthy()
-  })
-
-  it('should display message if there are no posts', () => {
-    coreService.getPosts.and.returnValue(of(null))
-    fixture.detectChanges()
-    const compiled = el.nativeElement
-    expect(compiled.querySelector('.no-posts').textContent).toContain('No posts for now')
-  }) */
-
-
   it('should call getposts', () => {
     component.ngOnInit();
     expect(coreService.getPosts).toHaveBeenCalledTimes(1)
