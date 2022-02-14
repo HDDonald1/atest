@@ -1,4 +1,38 @@
+
+import { PostData } from "models/share.model";
+import { User } from "models/user.model";
 import { Post } from "../models/post.model";
+
+export const postMock: Post = { 
+    userId: 0, 
+    id: 0, 
+    title: 'fakeTitle', 
+    body: 'fakeBody' 
+}
+export const userMock: User = { 
+    id: 0, 
+    name: '', 
+    username: 'username', 
+    email: 'email', 
+    address: {
+        street: 'street',
+        suite: 'suite',
+        city: 'city',
+        zipcode: 'zipcode',
+        geo: {lat: 'lat', lng: 'lng'}
+    }, 
+    phone: 'phone', 
+    website: 'website', 
+    company: {
+        name: 'name',
+        catchPhrase: 'catchPhrase',
+        bs: 'bs'
+    }
+}
+export const postDataMock: PostData = { 
+    user: userMock, 
+    post: postMock
+}
 
 export const posts: Post[] = [
     {

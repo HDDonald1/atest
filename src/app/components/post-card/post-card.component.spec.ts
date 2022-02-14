@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { posts } from '../../constants/db-testing.constant'
+import { posts } from 'mocks/response.mocks'
 import { PostCardComponent } from './post-card.component'
 
 describe('PostCardComponent', () => {
@@ -24,6 +24,12 @@ describe('PostCardComponent', () => {
 
   it('should create the post', () => {
     const post = fixture.debugElement.componentInstance
+    expect(post).toBeTruthy()
+  })
+
+  it('should display the post', () => {
+    component.post = posts[0]
+    const post = el.query(By.css('.card'))
     expect(post).toBeTruthy()
   })
 

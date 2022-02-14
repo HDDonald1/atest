@@ -9,15 +9,14 @@ import { provideMockActions } from '@ngrx/effects/testing'
 import { provideMockStore } from '@ngrx/store/testing'
 import { cold, hot } from 'jasmine-marbles'
 import { TestColdObservable } from 'jasmine-marbles/src/test-observables'
-import { GetPostsAction, SetPostsAction } from './actions'
+import { GetPostAction, GetPostDataAction, GetPostsAction, GetUserAction, SetPostAction, SetPostDataAction, SetPostsAction, SetUserAction } from './actions'
+import { postDataMock, postMock, userMock } from 'mocks/root.effect.mock'
 
 describe('RootEffects', () => {
-  const postMock = { userId: 0, id: 0, title: 'fakeTitle', body: 'fakeBody' }
   let actions: Observable<unknown>
   let effects: RootEffects
   let coreService: CoreService
   let store: Store<RootStoreModule>
-  let storeDispatchSpy: jasmine.Spy
 
   beforeEach(
     waitForAsync(() => {
@@ -41,7 +40,7 @@ describe('RootEffects', () => {
 
   describe('loadPosts$', () => {
     describe('success flow', () => {
-      it('should call getPost service method', () => {
+      it('should call getPosts service method', () => {
         const action = GetPostsAction()
 
         actions = hot('-a', { a: action })
@@ -63,6 +62,90 @@ describe('RootEffects', () => {
 
         const expected: TestColdObservable = cold('--b', { b: outcome })
         expect(effects.loadPosts$).toBeObservable(expected)
+      })
+    })
+  })
+
+  describe('loadPost$', () => {
+    describe('success flow', () => {
+      it('should call getPost service method', () => {
+        const action = GetPostAction({ postId: 0 })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: postMock })
+
+        const getPostSpy = spyOn(coreService, 'getPost').and.returnValue(response)
+
+        effects.loadPost$.subscribe(() => expect(getPostSpy).toHaveBeenCalled())
+      })
+
+      it('should store post', () => {
+        const action = GetPostAction({ postId: 0})
+        const outcome = SetPostAction({ post: postMock })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: postMock })
+
+        spyOn(coreService, 'getPost').and.returnValue(response)
+
+        const expected: TestColdObservable = cold('--b', { b: outcome })
+        expect(effects.loadPost$).toBeObservable(expected)
+      })
+    })
+  })
+
+  describe('loadUser$', () => {
+    describe('success flow', () => {
+      it('should call getUser service method', () => {
+        const action = GetUserAction({userid: 0 })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: userMock })
+
+        const getUserSpy = spyOn(coreService, 'getUser').and.returnValue(response)
+
+        effects.loaduser$.subscribe(() => expect(getUserSpy).toHaveBeenCalled())
+      })
+
+      it('should store user', () => {
+        const action = GetUserAction({ userid: 0 })
+        const outcome = SetUserAction({ user: userMock })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: userMock })
+
+        spyOn(coreService, 'getUser').and.returnValue(response)
+
+        const expected: TestColdObservable = cold('--b', { b: outcome })
+        expect(effects.loaduser$).toBeObservable(expected)
+      })
+    })
+  })
+
+  describe('loadPostData$', () => {
+    describe('success flow', () => {
+      it('should call getPostData service method', () => {
+        const action = GetPostDataAction({ postId: 0 })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: postDataMock })
+
+        const getPostDataSpy = spyOn(coreService, 'getPostData').and.returnValue(response)
+
+        effects.loaduser$.subscribe(() => expect(getPostDataSpy).toHaveBeenCalled())
+      })
+
+      it('should store postData', () => {
+        const action = GetPostDataAction({ postId: 0 })
+        const outcome = SetPostDataAction({ postData: postDataMock })
+
+        actions = hot('-a', { a: action })
+        const response: TestColdObservable = cold('-a|', { a: postDataMock })
+
+        spyOn(coreService, 'getPostData').and.returnValue(response)
+
+        const expected: TestColdObservable = cold('--b', { b: outcome })
+        expect(effects.loadPostData$).toBeObservable(expected)
       })
     })
   })
