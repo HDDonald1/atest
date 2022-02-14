@@ -12,7 +12,6 @@ import { TestColdObservable } from 'jasmine-marbles/src/test-observables'
 import { GetPostAction, GetPostDataAction, GetPostsAction, GetUserAction, SetPostAction, SetPostDataAction, SetPostsAction, SetUserAction } from './actions'
 import { postDataMock, postMock, userMock } from 'mocks/response.mocks'
 
-
 describe('RootEffects', () => {
   let actions: Observable<unknown>
   let effects: RootEffects

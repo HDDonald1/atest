@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { PostCardComponent } from 'components/post-card/post-card.component'
 import { of } from 'rxjs'
 
-
 import { CoreService } from '../../services/core/core.service'
 
 import { FeedComponent } from './feed.component'
