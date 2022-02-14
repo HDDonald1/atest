@@ -132,7 +132,7 @@ describe('RootEffects', () => {
 
         const getPostDataSpy = spyOn(coreService, 'getPostData').and.returnValue(response)
 
-        effects.loaduser$.subscribe(() => expect(getPostDataSpy).toHaveBeenCalled())
+        effects.loadPostData$.subscribe(() => expect(getPostDataSpy).toHaveBeenCalled())
       })
 
       it('should store postData', () => {
