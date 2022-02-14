@@ -3,7 +3,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { RouterTestingModule } from '@angular/router/testing'
 import { PostCardComponent } from 'components/post-card/post-card.component'
 import { of } from 'rxjs'
-import { posts } from '../../constants/db-testing.constant'
 
 import { CoreService } from '../../services/core/core.service'
 
@@ -14,6 +13,7 @@ import { RootStoreModule } from '../../root-store/root-store.module';
 import { GetPostsAction } from '../../root-store/actions';
 import SpyObj = jasmine.SpyObj;
 import Spy = jasmine.Spy;
+import { posts } from 'mocks/response.mocks'
 
 describe('FeedComponent', () => {
   let component: FeedComponent

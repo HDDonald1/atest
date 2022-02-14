@@ -10,7 +10,7 @@ import { provideMockStore } from '@ngrx/store/testing'
 import { cold, hot } from 'jasmine-marbles'
 import { TestColdObservable } from 'jasmine-marbles/src/test-observables'
 import { GetPostAction, GetPostDataAction, GetPostsAction, GetUserAction, SetPostAction, SetPostDataAction, SetPostsAction, SetUserAction } from './actions'
-import { postDataMock, postMock, userMock } from 'mocks/root.effect.mock'
+import { postDataMock, postMock, userMock } from 'mocks/response.mocks'
 
 describe('RootEffects', () => {
   let actions: Observable<unknown>
