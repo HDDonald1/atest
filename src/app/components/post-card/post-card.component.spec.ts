@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { posts } from 'mocks/response.mocks'
+import { postMock, posts } from 'mocks/response.mocks'
 import { PostCardComponent } from './post-card.component'
 
 describe('PostCardComponent', () => {
@@ -37,5 +37,15 @@ describe('PostCardComponent', () => {
     component.post = posts[0]
     const post = el.query(By.css('.card'))
     expect(post).toBeTruthy()
+  })
+
+  it('should show title', () => {
+    component.post = postMock
+    expect(component.title).toBe('fakeTitle')
+  })
+
+  it('should show body', () => {
+    component.post = postMock
+    expect(component.body).toBe('fakeBody')
   })
 })
