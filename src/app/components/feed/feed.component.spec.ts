@@ -78,7 +78,8 @@ describe('FeedComponent', () => {
     )
   })
 
-  it('should display posts', () => {
+  /* it('should display posts', () => {
+    component.ngOnInit()
     const compiled = el.nativeElement
     expect(compiled.querySelectorAll('app-post-card').length).toBeTruthy()
   })
@@ -88,22 +89,8 @@ describe('FeedComponent', () => {
     fixture.detectChanges()
     const compiled = el.nativeElement
     expect(compiled.querySelector('.no-posts').textContent).toContain('No posts for now')
-  })
+  }) */
 
-  it('should fetch async subtract data', waitForAsync(() => {
-    fixture.detectChanges()
-    fixture.whenStable().then(
-      () => {
-        expect(component.subtractData).toBe(-1)
-      }
-    )
-  }))
-
-  it('should fetch async subtract data', fakeAsync(() => {
-    fixture.detectChanges()
-    tick()
-    expect(component.subtractData).toBe(-1)
-  }))
 
   it('should call getposts', () => {
     component.ngOnInit();
