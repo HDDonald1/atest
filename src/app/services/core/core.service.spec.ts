@@ -3,9 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { CoreService } from './core.service';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { posts } from '../../constants/db-testing.constant';
 import { Post } from '../../models/post.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { posts } from 'mocks/response.mocks';
 
 describe('CoreService', () => {
   let service: CoreService;
